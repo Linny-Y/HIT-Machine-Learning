@@ -10,7 +10,7 @@ def pca(x, k):
     """
     mu = np.mean(x, axis=0)
     cov = np.cov(x, rowvar=False)
-    values, vectors = np.linalg.eig(cov)
+    values, vectors = np.linalg.eig(cov) # 特征值 特征向量
     index = np.argsort(values)[: -(k + 1): -1]  # 取最大的 k 个的下标值
     vectors = vectors[:, index]  # 取对应下标的特征向量
     x_pca = (x - mu).dot(vectors).dot(vectors.T) + mu  # 重建数据
